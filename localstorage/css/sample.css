@@ -1,0 +1,85 @@
+body {
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    font-size: 16px;
+    background-color: antiquewhite;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+header {
+    background-color: rgba(228, 208, 61, 0.781);
+    border-bottom: 1px solid #ccc;
+    text-align: center;
+}
+
+main {
+    border-bottom: 1px solid #ccc;
+    position: relative;
+}
+
+footer {
+    background-color: #fff;
+    border-bottom: 1px solid #ccc;
+    text-align: center;
+
+}
+
+p {
+    font-size: 200%;
+    text-align: center;
+    border-bottom: 1px solid #fff;
+    height: 200px;
+}
+
+ul {
+    padding: 40px, 0, 100px.0;
+    border-top: 1px solid #000000;
+    display: table;
+    /* 定義 */
+    table-layout: auto;
+    width: 60%;
+}
+
+ul {
+    height: 70px;
+    font-size: 50px;
+    text-align: center;
+}
+
+
+
+li {
+    list-style-type: none;
+    border: 1px solid #666;
+    background-color: #FFF;
+    display: table-cell;
+    /* 定義 */
+    cursor: pointer;
+}
+
+li:hover {
+    background: #0066CC;
+    color: #fff;
+}
+
+input,
+textarea {
+    margin: 2%;
+    width: 55%;
+    font-size: 80%;
+    box-shadow: 3px 3px 3px 3px rgb(68, 32, 212);
+}
+
+input {
+    height: 30px;
+}
+
+textarea {
+    height: 130px;
+    padding-left: 50px;
+}
+
+footer {
+    background-color: rgba(226, 219, 74, 0.84);
+}

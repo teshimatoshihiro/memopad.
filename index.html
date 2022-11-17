@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>会員登録１</title>
+  <link rel="stylesheet" href="localstorage/css/sample.css">
+</head>
+
+<body>
+  <header>
+    <h1>会員登録1</h1>
+  </header>
+
+  <main>
+    <dd>氏名　<input type="text" name="name" id="name"></dd>
+    <dd>カナ　<input type="text" name="kana" id="kana"></dd>
+    <dd>誕生日<input type="date" name="birthday" id="birthday"></dd>
+
+    <!-- <dd>ご職業</dd>
+    <label for="doctor"><input type="radio" name="doctor" id="doctor" value="value1">医師</label>
+    <label for="hpstaff"><input type="radio" name="hpstaff" id="hpstaff" value="value2">病院施設ご担当者</label>
+    <label for="commedical"><input type="radio" name="commedical" id="commedical" value="value3">コメディカル</label>
+    <label for="other"><input type="radio" name="radio" id="other" value="value4">その他</label>  -->
+    
+    <dd>メール<input type="email" name=email id="email"></dd>
+    
+    <!-- <dd>目的</dd>
+  <label for="recruit"><input type="radio" name="recruit" id="recruit"   value="recruit">求人</label>
+  <label for="hpstaff"><input type="radio" name="hpstaff" id="hpstaff"   value="seminer">教育</label>
+  <label for="advice"><input type="radio"  name="advice"  id="advice"    value="advice">アドバイス</label> -->
+
+    <dt>その他</dt>
+    <dd><textarea name="text" id="text_area"></textarea></dd>
+
+    <ul>
+      <li id="save">追加</li>
+      <li id="clear">削除</li>
+    </ul>
+  </main>
+
+  <!-- テキスト表示 -->
+    <div>テキスト表示
+      <textarea name="sample" id="push_text" cols="30" rows="10"></textarea>
+    </div>
+
+  <footer>
+    <ul>G's</ul>
+  </footer>
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script>
+
+    //テキストの登録
+    $('#save').on('click', function () {
+      const title1 = $('#name').val();
+      const title2 = $('#kana').val();
+      const title3 = $('#birthday').val();
+      // const title4 = $('#job').val();
+      const title5 = $('#email').val();
+      // const title6 = $('#purpose').val();
+
+      const text = $('#text_area', '#push_text').val();
+     
+      const data = {
+        title1: title1,
+        title2: title2,
+        title3: title3,
+        // title4: title4,
+        title5: title5,
+        // title6: title6,
+
+        text: text,
+
+      }
+      // 配列やオブジェクトをJSONに変換する処理
+      const jsonData = JSON.stringify(data);
+      localStorage.setItem('memo', jsonData);
+    });
+
+    //テキストの削除
+    $('#clear').on('click', function () {
+      localStorage.removeItem('memo');
+      $('#name', '#kana', '#birthday', 'job','#email','purpose').val('');
+      $('#text_area').val('');
+    });
+
+
+    // JSONを配列やオブジェクトに戻す処理
+    if (localStorage.getItem('memo')) {
+        const jsonData = localStorage.getItem('memo');
+        console.log(jsonData);
+        const data = JSON.parse(jsonData);
+        const teshi = data.name + data.kana + data.birthday + data.job +
+          data.job + data.email + data.purpose;
+        $("#push_text").val(teshi);
+      }
+      
+      // // ここから新規
+      // $('#name').val(data.title1);
+      // $('#kana').val(data.title2);
+      // $('#birthday').val(data.title3);
+      // $('#job').val(data.title4);
+      // $('#email').val(data.title5);
+      // $('#purpose').val(data.title6);
+      
+      // $('#text_area').val(data.text);
+
+
+      // キーの一覧
+        document.getElementById('keyList').addEventListener('click', function () {
+          let keys = [];
+           for (var i = 0; i < localStorage.length; ++i) {
+            keys.push(localStorage.key(i));
+           }
+           window.alert(keys.join("\n"));
+         });
+  </script>
+
+  <div>
+    <canvas id="myChart"></canvas>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+  <!-- グラフ -->
+  <script>
+    const ctx = document.getElementById('myChart');
+
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        // labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        labels: ['title1', 'title2', 'title3', 'title5'],
+        datasets: [{
+          label: '# of Votes',
+          data: [],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  </script>
+
+
+
+</body>
+
+</html>
